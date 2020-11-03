@@ -4,12 +4,7 @@
       <div class="pb-4 d-flex flex-column">
         <div class="d-flex">
           <div class="dropdown">
-            <button
-              class="dropdown-search h-100"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+            <button class="dropdown-search h-100" @click="handleDropdown" ref="dropdownMenu">
               <svg
                 width="1em"
                 height="1em"
@@ -28,17 +23,20 @@
                 />
               </svg>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">Action</button>
-              <button class="dropdown-item" type="button">Another action</button>
-              <button class="dropdown-item" type="button">Something else here</button>
-            </div>
           </div>
           <input
             type="text"
             placeholder="จังหวัดจุดหมายปลายทาง"
+            v-model="selectedProvince"
             class="w-100 p-1 py-2 pl-2 input-province"
           />
+        </div>
+        <div v-show="toggleDropdown" class="position-absolute toggle">
+          <div v-for="(province, index) in availableProvince" :key="index">
+            <button class="province-item pt-1" @click="provinceSelection(province)">
+              {{ province }}
+            </button>
+          </div>
         </div>
       </div>
       <div class="pb-5">
@@ -46,20 +44,76 @@
         <DatePicker></DatePicker>
       </div>
     </div>
-    <button class="btn-submit-province py-2">เช็คสภาพอากาศ</button>
+    <button class="btn-submit-province py-2" @click="searchSubmit">เช็คสภาพอากาศ</button>
   </div>
 </template>
 
 <script>
 import DatePicker from './DatePicker';
 import $ from 'jquery';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   components: {
     DatePicker,
   },
+  data() {
+    return {
+      toggleDropdown: false,
+      selectedProvince: '',
+      availableProvince: [],
+    };
+  },
   mounted() {
     $('.ui.dropdown').dropdown();
+  },
+  created() {
+    window.addEventListener('click', this.close);
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.close);
+  },
+  computed: {
+    ...mapState({
+      selectedDate: state => state.selectedDate,
+    }),
+    ...mapGetters({
+      provinceName: 'getProviceName',
+    }),
+  },
+  methods: {
+    close(e) {
+      if (this.toggleDropdown) {
+        const el = this.$refs.dropdownMenu;
+        const target = e.target;
+        if (el !== target && !el.contains(target)) {
+          this.toggleDropdown = false;
+        }
+      }
+    },
+    handleDropdown() {
+      this.toggleDropdown = !this.toggleDropdown;
+      this.availableProvince = this.provinceName;
+    },
+    provinceSelection(province) {
+      this.selectedProvince = province;
+    },
+    searchSubmit() {
+      if (this.selectedProvince && this.selectedDate) {
+        this.$store.dispatch('updateSelectedProvince', this.selectedProvince);
+      }
+    },
+  },
+  watch: {
+    selectedProvince(val) {
+      if (val) {
+        const filterProvince = this.provinceName.filter(p => p.includes(val));
+        this.availableProvince = filterProvince;
+        this.toggleDropdown = true;
+      } else {
+        this.toggleDropdown = false;
+      }
+    },
   },
 };
 </script>
@@ -101,4 +155,46 @@ export default {
   font-weight: 900;
   font-size: 1.1rem;
 }
+
+.btn-submit-province:hover {
+  background: #21b2b5;
+}
+
+.toggle {
+  width: 12rem;
+  max-height: 15rem;
+  overflow-y: scroll;
+  margin-top: 2.6rem;
+  margin-left: 0.4rem;
+  background: #ffffff;
+}
+
+.province-item {
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-top: none;
+  /* border-right: none; */
+  width: 100%;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.province-item:hover {
+  background: #277da1;
+  color: #ffffff;
+}
+
+/* ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  margin-left: -2rem;
+  width: 7px;
+  border: 1px solid #ced4da;
+  border-left: none;
+  border-top: none;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+} */
 </style>

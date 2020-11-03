@@ -8,6 +8,7 @@ export default new Vuex.Store({
     daysInterval: [],
     selectedDate: [],
     provinceInfo: [],
+    selectedProvince: '',
   },
   getters: {
     getProviceName: state => {
@@ -21,6 +22,12 @@ export default new Vuex.Store({
     setProvinceInfo(state, payload) {
       state.provinceInfo = payload;
     },
+    setSelectedDate(state, payload) {
+      state.selectedDate = payload;
+    },
+    setSelectedProvince(state, payload) {
+      state.selectedProvince = payload;
+    },
   },
   actions: {
     updateDaysInterval({ commit }, payload) {
@@ -28,6 +35,12 @@ export default new Vuex.Store({
     },
     updateProvinceInfo({ commit }, payload) {
       commit('setProvinceInfo', payload);
+    },
+    updateSelectedDate({ commit }, payload) {
+      commit('setSelectedDate', payload);
+    },
+    updateSelectedProvince({ commit }, payload) {
+      commit('setSelectedProvince', payload);
     },
   },
   modules: {},

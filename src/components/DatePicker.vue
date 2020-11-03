@@ -59,7 +59,7 @@ export default {
     },
     setDaysInterval() {
       const currentDate = new Date();
-      const daysInterval = [];
+      const setDaysInterval = [];
       const maxDate = currentDate.getDate() + 7;
       var count = 0;
       for (var day = currentDate.getDate(); day <= maxDate; day++) {
@@ -71,23 +71,39 @@ export default {
           month: newDay.toLocaleString('default', { month: 'short' }),
           year: newDay.toLocaleString('default', { year: '2-digit' }),
         };
-        daysInterval.push(dateInfo);
+        setDaysInterval.push(dateInfo);
         count++;
       }
-      return daysInterval;
+      return setDaysInterval;
     },
     dateSelection(index) {
       if (this.firstIndex === -1) {
         this.firstIndex = index;
       }
 
-      if (this.firstIndex !== -1 && index <= this.firstIndex) {
+      if (this.firstIndex !== -1 && index < this.firstIndex) {
         this.firstIndex = index;
         this.lastIndex = -1;
       }
 
       if (this.firstIndex !== -1 && index > this.firstIndex) {
         this.lastIndex = index;
+      }
+
+      if (this.firstIndex !== -1 && this.lastIndex !== -1 && index === this.firstIndex) {
+        this.firstIndex = -1;
+        this.lastIndex = -1;
+      }
+
+      if (this.firstIndex !== -1 && this.lastIndex !== -1) {
+        const dayFormat = [];
+        this.daysInterval.map((d, index) => {
+          if (index >= this.firstIndex && index <= this.lastIndex) {
+            dayFormat.push(d);
+          }
+        });
+        console.log('day', dayFormat);
+        this.$store.dispatch('updateSelectedDate', dayFormat);
       }
     },
   },
