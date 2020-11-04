@@ -67,8 +67,8 @@ export default {
         const newDay = new Date(tomorrow.setDate(tomorrow.getDate() + count));
         const dateInfo = {
           day: newDay.getDate(),
-          weekDay: newDay.toLocaleString('default', { weekday: 'short' }),
-          month: newDay.toLocaleString('default', { month: 'short' }),
+          weekDay: newDay.toLocaleString('th-TH', { weekday: 'short' }),
+          month: newDay.toLocaleString('th-TH', { month: 'short' }),
           year: newDay.toLocaleString('default', { year: '2-digit' }),
         };
         setDaysInterval.push(dateInfo);
@@ -102,7 +102,6 @@ export default {
             dayFormat.push(d);
           }
         });
-        console.log('day', dayFormat);
         this.$store.dispatch('updateSelectedDate', dayFormat);
       }
     },
@@ -110,7 +109,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .circle {
   color: #ffffff;
   width: 4rem;
