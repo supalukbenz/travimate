@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    <div class="content-container py-5 d-flex justify-content-center">
+    <div class="home-content-container py-5 d-flex justify-content-center">
       <div class="search-container">
         <SearchProvince></SearchProvince>
       </div>
@@ -41,7 +41,7 @@ export default {
   bottom: 0;
 }
 
-.content-container {
+.home-content-container {
   min-height: calc(100vh - 17rem);
 }
 
