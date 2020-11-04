@@ -3,9 +3,7 @@
     <Navbar></Navbar>
     <div class="content-container h-100 py-5 d-flex justify-content-center">
       <div>
-        <ForecastCard></ForecastCard>
-        <ForecastCard></ForecastCard>
-        <ForecastCard></ForecastCard>
+        <ForecastCard day="Monday" date="Nov 3, 2020" dayTemp="25" nightTemp="20"></ForecastCard>
       </div>
     </div>
   </div>

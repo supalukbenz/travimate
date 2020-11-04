@@ -1,21 +1,28 @@
 <template>
   <div class="main-card">
     <div class="date-container">
-      <h1>Monday</h1>
-      <h2>Nov 3, 2020</h2>
+      <h1>{{day}}</h1>
+      <h2>{{date}}</h2>
     </div>
     <div class="icon-container">
       <img src="../assets/sunny.png" class="icon" />
     </div>
     <div class="temp-container">
-      <h2>day 25°C</h2>
-      <h2>night 20°C</h2>
+      <h2>day {{dayTemp}}°C</h2>
+      <h2>night {{nightTemp}}°C</h2>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: [
+    'day',
+    'date',
+    'dayTemp',
+    'nightTemp'
+  ],
+};
 </script>
 
 <style scoped>
@@ -28,7 +35,7 @@ export default {};
   opacity: 0.5;
   border-radius: 10px;
   margin: 40px 0px 40px 0px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .main-card:hover {
