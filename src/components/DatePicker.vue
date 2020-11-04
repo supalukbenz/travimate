@@ -81,16 +81,20 @@ export default {
         this.firstIndex = index;
       }
 
-      if (this.firstIndex !== -1 && index < this.firstIndex) {
+      else if (this.firstIndex !== -1 && this.firstIndex === index && this.lastIndex === -1 ) {
+        this.firstIndex = -1;
+      }
+
+      else if (this.firstIndex !== -1 && index < this.firstIndex) {
         this.firstIndex = index;
         this.lastIndex = -1;
       }
 
-      if (this.firstIndex !== -1 && index > this.firstIndex) {
+      else if (this.firstIndex !== -1 && index > this.firstIndex) {
         this.lastIndex = index;
       }
 
-      if (this.firstIndex !== -1 && this.lastIndex !== -1 && index === this.firstIndex) {
+      else if (this.firstIndex !== -1 && this.lastIndex !== -1 && index === this.firstIndex) {
         this.firstIndex = -1;
         this.lastIndex = -1;
       }

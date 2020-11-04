@@ -97,7 +97,4 @@ export default {
   padding-bottom: 10rem;
 }
 
-.forecast {
-  /* background-image: url('../assets/south.png'); */
-}
 </style>
