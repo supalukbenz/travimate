@@ -6,7 +6,7 @@ const lang = 'th';
 
 async function getWeatherForecast(lat, lon) {
   const response = await axios.get(
-    `onecall?lat=${lat}&lon=${lon}&exclude=${excludes}&appid=${api_key}&lang=${lang}`
+    `onecall?lat=${lat}&lon=${lon}&exclude=${excludes}&appid=${api_key}&lang=${lang}&units=metric`
   );
   return response.data;
 }

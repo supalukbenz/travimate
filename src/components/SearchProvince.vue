@@ -52,6 +52,7 @@
 import DatePicker from './DatePicker';
 import $ from 'jquery';
 import { mapGetters, mapState } from 'vuex';
+import { getWeatherForecast } from '@/api/forecast.js';
 
 export default {
   components: {
@@ -79,6 +80,8 @@ export default {
     }),
     ...mapGetters({
       provinceName: 'getProviceName',
+      provinceInfo: 'getProvinceInfoByName',
+      weatherInfoBySelectedDay: 'getWeatherInfoBySelectedDay',
     }),
   },
   methods: {
@@ -98,9 +101,19 @@ export default {
     provinceSelection(province) {
       this.selectedProvince = province;
     },
-    searchSubmit() {
+    async getWeatherInfo(lat, lng) {
+      const forecastRes = await getWeatherForecast(lat, lng);
+      console.log('res', forecastRes);
+      return forecastRes;
+    },
+    async searchSubmit() {
       if (this.selectedProvince && this.selectedDate) {
-        this.$store.dispatch('updateSelectedProvince', this.selectedProvince);
+        const province = await this.provinceInfo(this.selectedProvince);
+        this.$store.dispatch('updateSelectedProvince', province);
+        const info = await this.getWeatherInfo(province.lat, province.lng);
+        this.$store.dispatch('updateWeatherAllInfo', info);
+        const weather = await this.weatherInfoBySelectedDay(this.selectedDate);
+        await this.$store.dispatch('updateWeatherInfoByDate', weather);
         this.$router.push('/forecast');
       }
     },

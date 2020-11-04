@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="title-recommend w-auto">วันที่อากาศแจ่มใส {{ selectedProvince }}</div>
+    <div class="title-recommend w-auto">วันที่อากาศแจ่มใส {{ selectedProvince.province }}</div>
     <div class="title-date-recommend">
-      ระหว่างวันที่ {{ daysInterval[0].day }}, {{ daysInterval[0].month }} -
-      {{ daysInterval[daysInterval.length - 1].day }},
-      {{ daysInterval[daysInterval.length - 1].month }}
+      ระหว่างวันที่ {{ selectedDate[0].day }} {{ selectedDate[0].month }} -
+      {{ selectedDate[selectedDate.length - 1].day }}
+      {{ selectedDate[selectedDate.length - 1].month }}
     </div>
     <div class="w-full d-flex ml-4 mt-2">
       <div class="icon">
@@ -59,9 +59,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import { getWeatherForecast } from '@/api/forecast.js';
-// import { mapState } from 'vuex'
 
 export default {
   // computed: {
@@ -73,6 +72,10 @@ export default {
   computed: {
     ...mapGetters({
       provinceInfo: 'getProvinceInfoByName',
+    }),
+    ...mapState({
+      selectedProvince: state => state.selectedProvince,
+      selectedDate: state => state.selectedDate,
     }),
   },
   async mounted() {
@@ -104,60 +107,6 @@ export default {
   data() {
     return {
       recommendClound: [],
-      recommendDo: [],
-      selectedProvince: 'นนทบุรี',
-      selectedDate: [
-        {
-          day: 5,
-          month: 'Nov',
-          weekDay: 'Thu',
-          year: '20',
-        },
-        {
-          day: 6,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-        {
-          day: 7,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-      ],
-      daysInterval: [
-        {
-          day: 4,
-          month: 'Nov',
-          weekDay: 'Thu',
-          year: '20',
-        },
-        {
-          day: 5,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-        {
-          day: 6,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-        {
-          day: 7,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-        {
-          day: 8,
-          month: 'Nov',
-          weekDay: 'Wed',
-          year: '20',
-        },
-      ],
     };
   },
 };

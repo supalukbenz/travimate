@@ -8,7 +8,10 @@ export default new Vuex.Store({
     daysInterval: [],
     selectedDate: [],
     provinceInfo: [],
-    selectedProvince: '',
+    weatherInfo: [],
+    weatherAllInfo: [],
+    weatherInfoByDate: [],
+    selectedProvince: {},
     forecastInfoByProvinceName: [],
   },
   getters: {
@@ -17,6 +20,17 @@ export default new Vuex.Store({
     },
     getProvinceInfoByName: state => provinceName => {
       return state.provinceInfo.find(p => p.province === provinceName);
+    },
+    getWeatherInfoBySelectedDay: state => day => {
+      console.log('day', day);
+      return state.weatherAllInfo.daily.filter(w => {
+        const filter = day.find(d => {
+          if (d.day === new Date(w.dt * 1000).getDate()) {
+            return w;
+          }
+        });
+        return filter;
+      });
     },
   },
   mutations: {
@@ -35,6 +49,15 @@ export default new Vuex.Store({
     setForecastInfoByProvinceName(state, payload) {
       state.forecastInfoByProvinceName = payload;
     },
+    setWeatherInfo(state, payload) {
+      state.weatherInfo = payload;
+    },
+    setWeatherAllInfo(state, payload) {
+      state.weatherAllInfo = payload;
+    },
+    setWeatherInfoByDate(state, payload) {
+      state.weatherInfoByDate = payload;
+    },
   },
   actions: {
     updateDaysInterval({ commit }, payload) {
@@ -51,6 +74,15 @@ export default new Vuex.Store({
     },
     updateForecastInfoByProvinceName({ commit }, payload) {
       commit('setForecastInfoByProvinceName', payload);
+    },
+    updateWeatherInfo({ commit }, payload) {
+      commit('setWeatherInfo', payload);
+    },
+    updateWeatherAllInfo({ commit }, payload) {
+      commit('setWeatherAllInfo', payload);
+    },
+    updateWeatherInfoByDate({ commit }, payload) {
+      commit('setWeatherInfoByDate', payload);
     },
   },
   modules: {},
