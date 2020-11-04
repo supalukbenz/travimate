@@ -17,7 +17,7 @@
 .footer {
   display: flex;
   flex-direction: column;
-  background: #277da1;
+  background: #bbbbbb;
   width: 100%;
   height: 5rem;
   flex-shrink: 0;
@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-left: 75vw;
-  font-size: 80%;
+  font-size: 80%;    
 }
 
 .credit {
@@ -44,13 +44,13 @@ img {
 }
 
 a {
-  color: white;
+  color: rgb(72, 72, 72);
   text-decoration: none;
   transition: transform 0.2s;
 }
 
 a:hover {
-  color: white;
+  color: rgb(72, 72, 72);
   transform: scale(1.02);
   text-decoration: none;
 }
