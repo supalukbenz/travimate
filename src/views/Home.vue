@@ -6,18 +6,27 @@
         <SearchProvince></SearchProvince>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import SearchProvince from '@/components/SearchProvince.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Home',
   components: {
     Navbar,
     SearchProvince,
+    Footer,
   },
 };
 </script>
+
+<style scoped>
+.content-container {
+  margin-bottom: 24vh;
+}
+</style>

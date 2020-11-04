@@ -55,18 +55,21 @@
         ></ForecastCard>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import ForecastCard from '@/components/ForecastCard.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Home',
   components: {
     Navbar,
     ForecastCard,
+    Footer,
   },
 };
 </script>
