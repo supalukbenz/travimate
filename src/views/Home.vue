@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    <div class="content-container h-100 py-5 d-flex justify-content-center">
+    <div class="content-container py-5 d-flex justify-content-center">
       <div class="search-container">
         <SearchProvince></SearchProvince>
       </div>
@@ -12,7 +12,6 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import SearchProvince from '@/components/SearchProvince.vue';
-import provinceInfo from '../assets/data/province_with_legion.json';
 
 export default {
   name: 'Home',
@@ -20,13 +19,16 @@ export default {
     Navbar,
     SearchProvince,
   },
-  mounted() {
-    this.$store.dispatch('updateProvinceInfo', provinceInfo);
-  },
 };
 </script>
 
 <style>
+.home {
+  background-image: url(../assets/bg_home.png);
+  background-size: cover;
+  height: 100%;
+}
+
 .search-container {
   width: 50%;
 }

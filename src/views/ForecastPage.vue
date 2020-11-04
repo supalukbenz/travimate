@@ -1,11 +1,10 @@
 <template>
-  <div class="home">
+  <div class="forecast">
     <Navbar></Navbar>
     <div class="content-container h-100 py-5 d-flex justify-content-center">
       <div>
         <ForecastCard></ForecastCard>
-        <ForecastCard></ForecastCard>
-        <ForecastCard></ForecastCard>
+        <RecommendForm></RecommendForm>
       </div>
     </div>
   </div>
@@ -14,12 +13,14 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import ForecastCard from '@/components/ForecastCard.vue';
+import RecommendForm from '@/components/RecommendForm.vue';
 
 export default {
-  name: 'Home',
+  name: 'Forecast',
   components: {
     Navbar,
     ForecastCard,
+    RecommendForm,
   },
 };
 </script>

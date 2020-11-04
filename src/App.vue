@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+import provinceInfo from './assets/data/province_with_legion.json';
+
+export default {
+  mounted() {
+    this.$store.dispatch('updateProvinceInfo', provinceInfo);
+  },
+};
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
 
@@ -13,8 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image: url(./assets/bg_home.png);
-  background-size: cover;
   height: 100vh;
 }
 </style>

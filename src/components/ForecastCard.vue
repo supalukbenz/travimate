@@ -28,7 +28,7 @@ export default {};
   opacity: 0.5;
   border-radius: 10px;
   margin: 40px 0px 40px 0px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .main-card:hover {

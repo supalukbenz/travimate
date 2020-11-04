@@ -9,10 +9,14 @@ export default new Vuex.Store({
     selectedDate: [],
     provinceInfo: [],
     selectedProvince: '',
+    forecastInfoByProvinceName: [],
   },
   getters: {
     getProviceName: state => {
       return state.provinceInfo.map(p => p.province);
+    },
+    getProvinceInfoByName: state => provinceName => {
+      return state.provinceInfo.find(p => p.province === provinceName);
     },
   },
   mutations: {
@@ -28,6 +32,9 @@ export default new Vuex.Store({
     setSelectedProvince(state, payload) {
       state.selectedProvince = payload;
     },
+    setForecastInfoByProvinceName(state, payload) {
+      state.forecastInfoByProvinceName = payload;
+    },
   },
   actions: {
     updateDaysInterval({ commit }, payload) {
@@ -41,6 +48,9 @@ export default new Vuex.Store({
     },
     updateSelectedProvince({ commit }, payload) {
       commit('setSelectedProvince', payload);
+    },
+    updateForecastInfoByProvinceName({ commit }, payload) {
+      commit('setForecastInfoByProvinceName', payload);
     },
   },
   modules: {},

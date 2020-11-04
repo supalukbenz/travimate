@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .circle {
   color: #ffffff;
   width: 4rem;

@@ -101,6 +101,7 @@ export default {
     searchSubmit() {
       if (this.selectedProvince && this.selectedDate) {
         this.$store.dispatch('updateSelectedProvince', this.selectedProvince);
+        this.$router.push('/forecast');
       }
     },
   },
@@ -158,6 +159,10 @@ export default {
 
 .btn-submit-province:hover {
   background: #21b2b5;
+}
+
+.btn-submit-province:focus {
+  outline: none;
 }
 
 .toggle {
