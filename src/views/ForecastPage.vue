@@ -71,7 +71,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main-content {
   width: 50vw;
   max-width: 1200px;

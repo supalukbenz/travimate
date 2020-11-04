@@ -50,7 +50,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .input-province {
   border: 1px solid #ced4da;
   border-left: none;

@@ -1,16 +1,16 @@
 <template>
-  <div class="main">
+  <div class="main-card-container">
     <div class="shadow main-card bg-light">
-      <div class="date-container">
-        <div class="day-name">{{ day }}</div>
+      <div class="date-container-forecast">
+        <div class="day-name-card">{{ day }}</div>
         <div>{{ date }}</div>
       </div>
-      <div class="icon-container">
-        <img src="http://openweathermap.org/img/wn/02d.png" class="icon" />
+      <div class="icon-forecast-container">
+        <img src="http://openweathermap.org/img/wn/02d.png" class="icon-forecast-card" />
         <div>{{ weather }}</div>
       </div>
       <div class="temp-container">
-        <div class="day">
+        <div class="day-icon-forecast">
           <svg
             width="1em"
             height="1em"
@@ -27,7 +27,7 @@
           </svg>
           <div>day {{ dayTemp }}°C</div>
         </div>
-        <div class="night">
+        <div class="night-icon-forecast">
           <svg
             width="1em"
             height="1em"
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style>
-.main {
+.main-card-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -96,7 +96,7 @@ export default {
   transform: scale(1.02);
 }
 
-.icon {
+.icon-forecast-card {
   height: 100%;
 }
 
@@ -105,12 +105,12 @@ h1 {
   vertical-align: middle;
 }
 
-.day-name {
+.day-name-card {
   font-weight: normal;
   font-size: 70%;
 }
 
-.date-container {
+.date-container-forecast {
   width: 25%;
   text-align: center;
   display: flex;
@@ -121,7 +121,7 @@ h1 {
   font-size: 120%;
 }
 
-.icon-container {
+.icon-forecast-container {
   width: 35%;
   display: flex;
   flex-direction: row;
@@ -138,7 +138,7 @@ h1 {
   margin: 1%;
 }
 
-.day {
+.day-icon-forecast {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -149,7 +149,7 @@ h1 {
   border-radius: 10px 0px 0px 10px;
 }
 
-.night {
+.night-icon-forecast {
   display: flex;
   flex-direction: column;
   height: 100%;
