@@ -6,18 +6,21 @@
         <SearchProvince></SearchProvince>
       </div>
     </div>
+    <!-- <div class="footer"><Footer></Footer></div> -->
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import SearchProvince from '@/components/SearchProvince.vue';
+// import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Home',
   components: {
     Navbar,
     SearchProvince,
+    // Footer,
   },
 };
 </script>
@@ -32,6 +35,15 @@ export default {
 .search-container {
   width: 50%;
 }
+
+.footer {
+  position: sticky;
+  bottom: 0;
+}
+
+/* .content-container {
+  margin-bottom: 24vh;
+} */
 
 @media screen and (max-width: 1162px) {
   .search-container {

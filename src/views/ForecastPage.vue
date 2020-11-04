@@ -1,5 +1,5 @@
 <template>
-  <div class="forecast">
+  <div class="forecast" :style="{ backgroundImage: `url(${imgURL})` }">
     <Navbar></Navbar>
     <div class="font-weight-bold mt-4 d-flex title-forecast-page">
       <svg
@@ -27,8 +27,10 @@
         </div>
       </div>
     </div>
-    <div class="px-5 mt-5"><hr /></div>
-    <RecommendForm></RecommendForm>
+    <div class="px-2 mt-5 recommend-component">
+      <RecommendForm></RecommendForm>
+    </div>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 
@@ -37,6 +39,7 @@ import Navbar from '@/components/Navbar.vue';
 import ForecastCard from '@/components/ForecastCard.vue';
 import RecommendForm from '@/components/RecommendForm.vue';
 import { mapState } from 'vuex';
+// import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Forecast',
@@ -44,12 +47,30 @@ export default {
     Navbar,
     ForecastCard,
     RecommendForm,
+    // Footer,
   },
   computed: {
     ...mapState({
       weatherInfoByDate: state => state.weatherInfoByDate,
       selectedProvince: state => state.selectedProvince,
     }),
+    imgURL() {
+      if (this.selectedProvince.legion === 'กลาง') {
+        return require('@/assets/center.png');
+      } else if (this.selectedProvince.legion === 'เหนือ') {
+        return require('@/assets/north.png');
+      } else if (this.selectedProvince.legion === 'ตะวันออก') {
+        return require('@/assets/east.png');
+      } else if (this.selectedProvince.legion === 'ตะวันตก') {
+        return require('@/assets/west.png');
+      } else if (this.selectedProvince.legion === 'ตะวันออกเฉียงเหนืือ') {
+        return require('@/assets/northeast.png');
+      } else if (this.selectedProvince.legion === 'ใต้') {
+        return require('@/assets/south.png');
+      } else {
+        return '';
+      }
+    },
   },
 };
 </script>
@@ -70,5 +91,13 @@ export default {
 .legion-forecast-page {
   margin-left: 15rem;
   font-size: 1.2rem;
+}
+
+.recommend-component {
+  padding-bottom: 10rem;
+}
+
+.forecast {
+  /* background-image: url('../assets/south.png'); */
 }
 </style>

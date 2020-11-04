@@ -79,7 +79,10 @@ export default {
     }),
   },
   async mounted() {
-    const forecastRes = await getWeatherForecast(13.8658492, 100.4941285);
+    const forecastRes = await getWeatherForecast(
+      this.selectedProvince.lat,
+      this.selectedProvince.lng
+    );
     const forecast = [];
     forecastRes.daily.map(f => {
       const formatInfo = {
@@ -92,7 +95,6 @@ export default {
       forecast.push(formatInfo);
     });
     this.recommendClound = this.findRecommendWeather(forecast);
-    console.log(this.recommendClound);
   },
   methods: {
     findRecommendWeather(forecast) {
