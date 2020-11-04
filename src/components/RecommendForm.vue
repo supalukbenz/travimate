@@ -1,13 +1,11 @@
 <template>
-  <div>
+  <div class="recommend-container">
     <div class="title-recommend w-auto">วันที่อากาศแจ่มใส {{ selectedProvince.province }}</div>
     <div class="title-date-recommend">
-      ระหว่างวันที่ {{ selectedDate[0].day }} {{ selectedDate[0].month }} -
-      {{ selectedDate[selectedDate.length - 1].day }}
-      {{ selectedDate[selectedDate.length - 1].month }}
+      ภายใน 7 วันที่จะถึง
     </div>
-    <div class="w-full d-flex ml-4 mt-2">
-      <div class="icon">
+    <div class="w-full d-flex">
+      <div class="icon d-flex">
         <svg
           width="1em"
           height="1em"
@@ -125,10 +123,14 @@ export default {
   font-size: 1.2rem;
 }
 
+.recommend-container {
+  padding: 0 5rem;
+}
+
 .sun-icon {
   font-size: 9rem;
   color: #f28c38;
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .cloud-icon {
@@ -162,7 +164,7 @@ export default {
 }
 
 .date-recommend {
-  margin-left: 5rem;
+  margin-left: 2rem;
   margin-top: 2rem;
 }
 </style>

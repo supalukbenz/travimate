@@ -107,7 +107,8 @@ export default {
       return forecastRes;
     },
     async searchSubmit() {
-      if (this.selectedProvince && this.selectedDate) {
+      if (this.selectedProvince && this.selectedDate.length !== 0) {
+        console.log(this.selectedDate);
         const province = await this.provinceInfo(this.selectedProvince);
         this.$store.dispatch('updateSelectedProvince', province);
         const info = await this.getWeatherInfo(province.lat, province.lng);
