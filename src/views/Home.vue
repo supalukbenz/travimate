@@ -41,10 +41,6 @@ export default {
   bottom: 0;
 }
 
-/* .content-container {
-  margin-bottom: 24vh;
-} */
-
 @media screen and (max-width: 1162px) {
   .search-container {
     width: 60%;

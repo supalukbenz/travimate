@@ -79,22 +79,14 @@ export default {
     dateSelection(index) {
       if (this.firstIndex === -1) {
         this.firstIndex = index;
-      }
-
-      else if (this.firstIndex !== -1 && this.firstIndex === index && this.lastIndex === -1 ) {
+      } else if (this.firstIndex !== -1 && this.firstIndex === index && this.lastIndex === -1) {
         this.firstIndex = -1;
-      }
-
-      else if (this.firstIndex !== -1 && index < this.firstIndex) {
+      } else if (this.firstIndex !== -1 && index < this.firstIndex) {
         this.firstIndex = index;
         this.lastIndex = -1;
-      }
-
-      else if (this.firstIndex !== -1 && index > this.firstIndex) {
+      } else if (this.firstIndex !== -1 && index > this.firstIndex) {
         this.lastIndex = index;
-      }
-
-      else if (this.firstIndex !== -1 && this.lastIndex !== -1 && index === this.firstIndex) {
+      } else if (this.firstIndex !== -1 && this.lastIndex !== -1 && index === this.firstIndex) {
         this.firstIndex = -1;
         this.lastIndex = -1;
       }

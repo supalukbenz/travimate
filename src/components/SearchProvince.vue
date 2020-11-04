@@ -102,13 +102,11 @@ export default {
       this.selectedProvince = province;
     },
     async getWeatherInfo(lat, lng) {
-      const forecastRes = await getWeatherForecast(lat, lng);
-      console.log('res', forecastRes);
+      const forecastRes = await getWeatherForecast(lat, lng);      
       return forecastRes;
     },
     async searchSubmit() {
-      if (this.selectedProvince && this.selectedDate.length !== 0) {
-        console.log(this.selectedDate);
+      if (this.selectedProvince && this.selectedDate.length !== 0) {        
         const province = await this.provinceInfo(this.selectedProvince);
         this.$store.dispatch('updateSelectedProvince', province);
         const info = await this.getWeatherInfo(province.lat, province.lng);

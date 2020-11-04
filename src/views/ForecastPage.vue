@@ -96,5 +96,4 @@ export default {
 .recommend-component {
   padding-bottom: 10rem;
 }
-
 </style>
