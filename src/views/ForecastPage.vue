@@ -30,7 +30,7 @@
     <div class="px-2 mt-5 recommend-component">
       <RecommendForm></RecommendForm>
     </div>
-    <!-- <Footer></Footer> -->
+    <Footer></Footer>
   </div>
 </template>
 
@@ -39,7 +39,7 @@ import Navbar from '@/components/Navbar.vue';
 import ForecastCard from '@/components/ForecastCard.vue';
 import RecommendForm from '@/components/RecommendForm.vue';
 import { mapState } from 'vuex';
-// import Footer from '@/components/Footer.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Forecast',
@@ -47,7 +47,7 @@ export default {
     Navbar,
     ForecastCard,
     RecommendForm,
-    // Footer,
+    Footer,
   },
   computed: {
     ...mapState({

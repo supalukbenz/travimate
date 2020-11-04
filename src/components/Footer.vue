@@ -20,7 +20,8 @@
   background: rgb(228, 228, 228);
   width: 100%;
   height: 5rem;
-  position: sticky;
+  flex-shrink: 0;
+  position: relative;
   bottom: 0;
   width: 10;
   justify-content: center;
