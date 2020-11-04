@@ -25,7 +25,7 @@
             width="1em"
             height="1em"
             viewBox="0 0 16 16"
-            class="bi bi-brightness-high-fill"
+            class="bi bi-brightness-high-fill sun-icon"
             fill="#EF810E"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -42,8 +42,8 @@
             width="1em"
             height="1em"
             viewBox="0 0 16 16"
-            class="bi bi-moon"
-            fill="#fbecb8"
+            class="bi bi-moon top-icon"
+            fill="#B29C50"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -110,6 +110,11 @@ export default {
   margin: 0.8rem 0;
   transition: transform 0.2s;
   margin-right: 1em;
+}
+
+.top-icon {
+  margin-top: -1rem;
+  font-size: 1.1rem;
 }
 
 .main-card:hover {

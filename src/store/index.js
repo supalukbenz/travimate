@@ -21,7 +21,7 @@ export default new Vuex.Store({
     getProvinceInfoByName: state => provinceName => {
       return state.provinceInfo.find(p => p.province === provinceName);
     },
-    getWeatherInfoBySelectedDay: state => day => {      
+    getWeatherInfoBySelectedDay: state => day => {
       return state.weatherAllInfo.daily.filter(w => {
         const filter = day.find(d => {
           if (d.day === new Date(w.dt * 1000).getDate()) {

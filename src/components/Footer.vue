@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-left: 75vw;
-  font-size: 80%;    
+  font-size: 80%;
 }
 
 .credit {
